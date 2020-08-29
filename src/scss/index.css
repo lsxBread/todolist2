@@ -21,6 +21,7 @@ section.itemList {
   margin-top: 16px;
 }
 section.itemList ul li {
+  margin-top: 5px;
   list-style: none;
   display: flex;
   justify-content: space-between;
