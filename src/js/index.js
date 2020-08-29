@@ -5,6 +5,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const itemInput = document.querySelector('section.addItem > input')
   const ulTag = document.querySelector('section.itemList > ul')
 
+  const removeClickedItem = function (event) {
+    // find clicked button
+    const clickedButton = event.target
+
+    // find button's father -- li
+    const fatherLiTag = clickedButton.parentElement
+
+    // remove li
+    fatherLiTag.remove()
+  }
+
   const createListItemWithInputValue = function (itemName) {
     // create li tag <Li>
     const liTag = document.createElement('li')
@@ -12,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const spanTag = document.createElement('span')
     // create delete button <button>
     const deleteButton = document.createElement('button')
+
+    // add delete item listener
+    deleteButton.addEventListener('click', removeClickedItem)
+
     // put itemName inside span tag <span>xxx</span>
     spanTag.innerText = itemName
     // put delete text inside button
@@ -36,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // add the li item into ul tag
     appendListItemIntoList(listItem)
+    
+    // clear input
+    itemInput.value = ""
   }
 
   addButton.addEventListener('click', handleAddButtonClick)
